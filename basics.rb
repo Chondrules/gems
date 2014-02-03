@@ -327,4 +327,87 @@ odds.each do |beodd|
 end
 puts
 end if (false)
+####################
+#break in a loop works on a modifier expression
+begin
+x = 10
+y = 100
 
+while (x < y)
+  x += 1
+  puts "x=" + x.to_s
+  break if y % x == 0
+end
+end if (false)
+
+###########################
+#exceptions with rescue
+begin
+def bad_method
+  stringy = "I am a thing in existance"
+  stringy.this_cant_be
+rescue NoMethodError
+  puts "There's no method for your arg usage"
+rescue Exception
+  puts 'This catches all exceptions'
+end
+
+bad_method
+end if (false)
+##################################
+#ensure  -  it always happens if you got one.
+begin
+def dance
+  yell = "woot!".upcase!
+  "invader zim yells".get_it_off_me
+rescue NoMethodError
+  puts "You can't do that on TV"
+rescue Exception
+  puts "I fell down"
+else
+  print yell
+ensure
+  puts " That's all you got"
+end
+dance
+
+#nested rescue to the rescue and all on one line.  It is really nested or iteated?
+not_a_thing.do_thing rescue what.thefuck rescue puts "one liner Crash"
+end if (false)
+##############################
+#how do i do that again, retry
+begin
+def send_present
+  if (@present)
+    self.send("A box of candy")
+  else 
+    puts "send them a nice card instead with panda sex"
+  end
+rescue
+  @present = false
+  retry
+end
+send_present
+end if (false)
+##################################
+#raise an error, outloud.. and catch it
+begin
+def raiseme(doit)
+  if (doit == true)
+    raise NoMethodError, "You shouldn't do this"
+  end
+rescue NoMethodError
+  puts "I see you got raised, you should go sleep instead"
+end
+raiseme(false)
+raiseme(true)
+end if (false)
+
+#####################
+#file io
+begin
+basics = "basics.rb"
+if File.file?(basics)
+  puts basics + " is " + File.size?(basics).to_s + " bytes in size"
+end
+end if (false)
