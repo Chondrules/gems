@@ -410,4 +410,57 @@ basics = "basics.rb"
 if File.file?(basics)
   puts basics + " is " + File.size?(basics).to_s + " bytes in size"
 end
+if File.directory?("/Users2/")
+  puts "/Users2 is a directory"
+end
 end if (false)
+
+#print this file duh
+begin
+myfile = File.open("basics.rb", "r")
+myfile.each_line {|l| puts l}
+myfile.close
+end if (false)
+
+#rad, just rad
+begin
+IO.foreach("basics.rb") {|line| puts line}
+end if (false)
+##############################
+#threads
+begin
+first = Thread.new() do
+  myindex = 0
+  while(myindex < 10)
+    puts "Thread One!"
+    sleep 1
+    myindex += 1
+  end 
+end
+
+#hlrb says we don't need it but it won't run if we don't join
+first.join()
+end if (false)
+
+####################
+#thread.pass
+begin
+t1 = Thread.new { print "w"; Thread.pass; print "a" }
+t2 = Thread.new { print "e"; Thread.pass; print "l" }
+t1.join
+t2.join
+puts
+end if (false)
+
+##############
+#thread stopping/resuming, again, just awesome
+mate = Thread.new do
+  puts "Ahoy! Can I be dropping the anchor sir?"
+  Thread.stop
+  puts "Aye sir, dropping anchor!"
+  end
+Thread.pass
+puts "CAPTAIN: Aye, laddy!"
+mate.run
+mate.join
+
