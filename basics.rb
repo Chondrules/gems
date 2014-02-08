@@ -413,7 +413,7 @@ end
 if File.directory?("/Users2/")
   puts "/Users2 is a directory"
 end
-end if (false)
+end if (true)
 
 #print this file duh
 begin
@@ -453,7 +453,8 @@ puts
 end if (false)
 
 ##############
-#thread stopping/resuming, again, just awesome
+#thread stopping/resuming
+begin
 mate = Thread.new do
   puts "Ahoy! Can I be dropping the anchor sir?"
   Thread.stop
@@ -463,4 +464,16 @@ Thread.pass
 puts "CAPTAIN: Aye, laddy!"
 mate.run
 mate.join
+end if (false)
+####################
+#array evaluation and subtraction 
+begin
+cities  = %w[ London
+              Oslo
+              Paris
+              Amsterdam
+              Berlin ]
+visited = %w[Berlin Oslo]
 
+puts "I still need to visit the following cities:", cities - visited
+end if (false)
