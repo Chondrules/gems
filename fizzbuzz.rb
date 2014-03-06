@@ -5,7 +5,7 @@ class FizzBuzz
     # if the number is divisible by @second print buzz
     # if both print fizz buzz
     (1..num).each do |value|
-      if (value != num && value != 1)
+      if (value != 1)
           print " "
       end 
       if (value % first == 0) and (value % second == 0) then
