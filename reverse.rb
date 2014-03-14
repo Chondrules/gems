@@ -19,5 +19,16 @@ class R
   end
 end
 
-r = R.new("ABCDE")
-r.reverse()
+def sprev(s)
+  s.reverse.split
+end
+
+#better way than NilClass for this?
+if ARGV.first.class == NilClass
+  puts "You gave me nothing to reverse!"
+else
+  puts sprev(ARGV.first)
+
+  r = R.new(ARGV.first)
+  r.reverse()
+end

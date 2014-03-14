@@ -413,7 +413,7 @@ end
 if File.directory?("/Users2/")
   puts "/Users2 is a directory"
 end
-end if (true)
+end if (false)
 
 #print this file duh
 begin
@@ -477,3 +477,45 @@ visited = %w[Berlin Oslo]
 
 puts "I still need to visit the following cities:", cities - visited
 end if (false)
+###############################
+#show off yield.  That lets the block passed to this method exec
+begin
+def call_block
+  puts "Start block"
+  yield
+  yield
+  puts "End block"
+end
+
+call_block { puts "In the block now" }
+
+def who_says_what
+  yield("Dave", "hello")
+  yield("Andy", "Getout")
+end
+
+who_says_what {|person, phrase| puts "#{person} says #{phrase}"}
+end if (false)
+
+#########################
+#looping with blocks
+begin
+['chair', 'walrus', 'sponge'].each {|name| print name, " " }
+puts
+9.times { print "*" }
+puts
+3.upto(14) {|i| print i, ", "}
+puts
+end if true
+#######################
+#puts and gets
+begin
+puts "Give me text"
+line = gets
+puts line
+end if false
+
+################
+## handle argv
+begin
+end
