@@ -506,7 +506,7 @@ puts
 puts
 3.upto(14) {|i| print i, ", "}
 puts
-end if true
+end if false
 #######################
 #puts and gets
 begin
@@ -516,6 +516,18 @@ puts line
 end if false
 
 ################
-## handle argv
+## read all of the first arg to the program (assuming its a file) into an array.
 begin
-end
+lines = IO.readlines(ARGV.first)
+end if false
+
+#############
+##inject
+#sum is set to whatever injects param is at the start, then the block is called for each
+begin
+puts [1,3,5,7,9].inject(0){|sum,element| sum+element}
+#inject with no params takes the first arg in the set as the block param and starts with #2
+puts [1,2,3,4].inject(){|sum,element| sum+element}
+#you can give the method you want on each element as an arg to inject
+puts [1,2,3,4,5].inject(:+)
+end if true
