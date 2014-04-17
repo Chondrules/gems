@@ -530,4 +530,37 @@ puts [1,3,5,7,9].inject(0){|sum,element| sum+element}
 puts [1,2,3,4].inject(){|sum,element| sum+element}
 #you can give the method you want on each element as an arg to inject
 puts [1,2,3,4,5].inject(:+)
-end if true
+end if false
+
+### passing blocks to functions and using them like methods
+begin
+class ProcMe
+  def pass_block(&block)
+    @myblock = block
+  end
+  def call_block(params)
+    @myblock.call(params)
+  end
+end
+guy = ProcMe.new
+guy.pass_block { |param| puts "The bloack param was passed: #{param}" }
+guy.call_block(100)
+end if false
+
+###single line lambda syntax with closures
+# -> denotes the lambda, the args to the lambda are spelled out in front of the block, then the block
+begin
+proc1 = -> arg { puts "I live in this block with #{arg}" }
+proc2 = -> arg1, arg2 { puts "I live in this block with #{arg1} and #{arg2}" }
+proc1.call "brant"
+proc2.call "brant", 4
+end if false
+
+########## use the new block types with lambda's
+#note this proc takes a block as an arg and calls it like a method.
+proc1 = -> a, *b, &block do
+  puts "a = #{a}"
+  puts "b = #{b}"
+  block.call
+end
+proc1.call(1,2,3,4,5) {puts "in block1" }
